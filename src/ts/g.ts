@@ -27,7 +27,7 @@
   /*
     2. I detta exempel har vi fokuserat på if-statements. Se om du kan göra exemplet bättre!
     */
-  
+   
   class Student {
     constructor(
       public name: string,
