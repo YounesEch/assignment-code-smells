@@ -51,19 +51,19 @@
   }
   
   function averageWeeklyTemperature(temperatures: temp[]): number {
-  let temperatureNow = Date.now();
+  let weeklyTemperature = 0;
   const MILLISECONDS_IN_A_WEEK = 7 * 24 * 60 * 60 * 1000;
   const ONE_WEEK_IN_DAYS = 7;
 
   for (const temp of temperatures) {
     if (
       temp.location === "Stockholm" &&
-      temp.date.getTime() > temperatureNow - MILLISECONDS_IN_A_WEEK
+      temp.date.getTime() > weeklyTemperature - MILLISECONDS_IN_A_WEEK
     ) {
-      temperatureNow += temp.temperature;
+      weeklyTemperature += temp.temperature;
     }
   }
-    return temperatureNow /ONE_WEEK_IN_DAYS;
+    return weeklyTemperature / ONE_WEEK_IN_DAYS;
   }
 /*
   4. Följande funktion kommer att presentera ett objekt i dom:en. 
@@ -148,19 +148,24 @@ function concatenateStrings() {
     lösning som är hållbar och skalar bättre. 
 */
 class User {
-  constructor(public name: string, public birthday: Date, public email: string, public password: string) {
-  }
+  constructor(
+    public name: string, 
+    public birthday: Date, 
+    public email: string, 
+    public password: string
+    ){}
 }
 
 function createUser( user: User)  {
   // Validation
-
+  const universal_coordinated_time = 1970;
+  const minimum_age = 20;
   const ageDiff = Date.now() - user.birthday.getTime();
   const ageDate = new Date(ageDiff);
-  const userAge = Math.abs(ageDate.getUTCFullYear() - 1970);
+  const userAge = Math.abs(ageDate.getUTCFullYear() - universal_coordinated_time);
 
-  if (userAge >= 20) {
-    // Logik för att skapa en användare
+  if (userAge >= minimum_age) {
+    return "Ditt konto har skapats!"
   } else {
     return "Du är under 20 år";
   }
