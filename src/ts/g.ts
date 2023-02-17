@@ -44,7 +44,7 @@
      
   class temp {
     constructor(
-      public location: string,
+      public city: string,
       public date: Date,
       public temperature: number
     ){}
@@ -57,7 +57,7 @@
 
   for (const temp of temperatures) {
     if (
-      temp.location === "Stockholm" &&
+      temp.city === "Stockholm" &&
       temp.date.getTime() > weeklyTemperature - MILLISECONDS_IN_A_WEEK
     ) {
       weeklyTemperature += temp.temperature;
